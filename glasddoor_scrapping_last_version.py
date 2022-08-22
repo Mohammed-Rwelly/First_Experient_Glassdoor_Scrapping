@@ -10,8 +10,8 @@ from selenium.webdriver.chrome.service import Service
 from datetime import datetime,timedelta
 import re
 #locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans"]
-locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
-#locations = ["Qatar","United Kingdom"]
+#locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
+locations = ["Qatar","United Kingdom"]
 def get_jobs(keyword, num_jobs):
     '''Gathers jobs as a dataframe, scraped from Glassdoor'''
     # Initializing the webdriver
@@ -160,6 +160,7 @@ def get_jobs(keyword, num_jobs):
                 # Clicking on the "next page" button
                 try:
                     driver.find_element(By.CSS_SELECTOR,'[alt="next-icon"]').click()
+                    time.sleep(10)
                 except NoSuchElementException:
                     print("Scraping terminated before reaching target number of jobs. Needed {}, got {}.".format(num_jobs, len(jobs_for_country)))
                     break
@@ -168,6 +169,6 @@ def get_jobs(keyword, num_jobs):
         #This line converts the dictionary object into a pandas DataFrame.  
     return pd.DataFrame(jobs_for_countries)
      
-df=get_jobs('data',30)
+df=get_jobs('data',40)
 df.to_excel("data_final.xlsx",index=True) 
      
