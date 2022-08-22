@@ -168,6 +168,6 @@ def get_jobs(keyword, num_jobs):
         #This line converts the dictionary object into a pandas DataFrame.  
     return pd.DataFrame(jobs_for_countries)
      
-df=get_jobs('data',100)
+df=get_jobs('data',30)
 df.to_excel("data_final.xlsx",index=True) 
      
