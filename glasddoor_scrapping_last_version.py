@@ -93,8 +93,11 @@ def get_jobs(keyword, num_jobs):
                     try:
                         driver.find_element(By.XPATH,'//div[@class="css-t3xrds e856ufb2"]').click()
                     except NoSuchElementException:
-                        pass   
-                    job_description_full = driver.find_element(By.XPATH,'.//div[@class="jobDescriptionContent desc"]').text
+                        pass
+                    try:
+                        job_description_full = driver.find_element(By.XPATH,'.//div[@class="jobDescriptionContent desc"]').text
+                    except NoSuchElementException:
+                        job_description_full ="N/A"    
                     try:
                         Posted_Date=driver.find_element(By.XPATH,'//*[@id="MainCol"]/div[1]/ul/li[{}]/div[2]/div[3]/div[2]/div[2]'.format(job+1)).text
                     except NoSuchElementException:
