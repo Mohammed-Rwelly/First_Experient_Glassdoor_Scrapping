@@ -158,6 +158,10 @@ def get_jobs(keyword, num_jobs):
                     })
                 # Clicking on the "next page" button
                 try:
+                    page = driver.find_element_by_xpath('//*[@id="MainCol"]/div[2]/div/div[2]').text
+                    page = page.split()
+                    if page[1]==page[3]:
+                        break
                     driver.find_element(By.CSS_SELECTOR,'[alt="next-icon"]').click()
                     time.sleep(10)
                 except NoSuchElementException:
@@ -168,6 +172,6 @@ def get_jobs(keyword, num_jobs):
         #This line converts the dictionary object into a pandas DataFrame.  
     return pd.DataFrame(jobs_for_countries)
      
-df=get_jobs('data',500)
+df=get_jobs('data',50)
 df.to_excel("data_final.xlsx",index=True) 
      
