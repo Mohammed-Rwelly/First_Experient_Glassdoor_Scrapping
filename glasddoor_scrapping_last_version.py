@@ -158,7 +158,7 @@ def get_jobs(keyword, num_jobs):
                     })
                 # Clicking on the "next page" button
                 try:
-                    page = driver.find_element_by_xpath('//*[@id="MainCol"]/div[2]/div/div[2]').text
+                    page = driver.find_element(By.XPATH,'//*[@id="MainCol"]/div[2]/div/div[2]').text
                     page = page.split()
                     if page[1]==page[3]:
                         break
