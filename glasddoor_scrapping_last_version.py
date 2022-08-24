@@ -92,7 +92,7 @@ def get_jobs(keyword, num_jobs):
                     #Click on "Show More" for extract full description                        
                     try:
                         driver.find_element(By.XPATH,'//div[@class="css-t3xrds e856ufb2"]').click()
-                        time.sleep(3)
+                        #time.sleep(3)
                     except NoSuchElementException:
                         pass
                     try:
@@ -173,6 +173,6 @@ def get_jobs(keyword, num_jobs):
         #This line converts the dictionary object into a pandas DataFrame.  
     return pd.DataFrame(jobs_for_countries)
      
-df=get_jobs('data',500)
+df=get_jobs('data',400)
 df.to_excel("data_final.xlsx",index=True) 
      
