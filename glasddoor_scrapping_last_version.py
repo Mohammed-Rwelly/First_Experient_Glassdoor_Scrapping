@@ -10,8 +10,8 @@ from selenium.webdriver.chrome.service import Service
 from datetime import datetime,timedelta
 import re
 #locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans"]
-locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
-#locations = ["Qatar","United Kingdom"]
+#locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
+locations = ["France"]
 def get_jobs(keyword, num_jobs):
     '''Gathers jobs as a dataframe, scraped from Glassdoor'''
     # Initializing the webdriver
@@ -92,6 +92,7 @@ def get_jobs(keyword, num_jobs):
                     #Click on "Show More" for extract full description                        
                     try:
                         driver.find_element(By.XPATH,'//div[@class="css-t3xrds e856ufb2"]').click()
+                        time.sleep(3)
                     except NoSuchElementException:
                         pass
                     try:
