@@ -51,12 +51,12 @@ def get_jobs(keyword, num_jobs):
             except:
                 pass
             #after loding the page we are clicking on "see all the jobs " button 
-            time.sleep(5)
+            time.sleep(2)
             try:
                 driver.find_element(By.XPATH,'//span[@class="SVGInline css-1mgba7 css-1hjgaef"]').click()
             except:
                 pass
-            time.sleep(10) 
+            time.sleep(2) 
             
             while len(jobs_for_country) < num_jobs: 
                 job_buttons = driver.find_elements_by_xpath("//*[@id='MainCol']/div[1]/ul/li")
