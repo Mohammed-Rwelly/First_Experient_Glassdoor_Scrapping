@@ -56,7 +56,7 @@ def get_jobs(keyword, num_jobs):
                 driver.find_element(By.XPATH,'//span[@class="SVGInline css-1mgba7 css-1hjgaef"]').click()
             except:
                 pass
-            time.sleep(5) 
+            time.sleep(15) 
             
             while len(jobs_for_country) < num_jobs: 
                 job_buttons = driver.find_elements_by_xpath("//*[@id='MainCol']/div[1]/ul/li")
