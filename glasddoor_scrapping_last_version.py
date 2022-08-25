@@ -10,8 +10,8 @@ from selenium.webdriver.chrome.service import Service
 from datetime import datetime,timedelta
 import re
 #locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans"]
-locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
-#locations = ["France"]
+#locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
+locations = ["France"]
 def get_jobs(keyword, num_jobs):
     '''Gathers jobs as a dataframe, scraped from Glassdoor'''
     # Initializing the webdriver
@@ -35,9 +35,8 @@ def get_jobs(keyword, num_jobs):
        chrome_options.add_argument(option)
     options = webdriver.ChromeOptions() 
     driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
-    for i in range(0,13,4):
-        locations_sub=locations[i:i+4]
-        for country in locations_sub:
+    for country in locations:             
+        try:
             jobs_for_country=[]
             url='https://www.glassdoor.com/Search/results.htm?keyword={}&locT=C&locName={}'.format(keyword.replace(' ','%20'),country)
             time.sleep(5)
@@ -57,22 +56,27 @@ def get_jobs(keyword, num_jobs):
                 driver.find_element(By.XPATH,'//span[@class="SVGInline css-1mgba7 css-1hjgaef"]').click()
             except:
                 pass
+            time.sleep(10) 
+            
             while len(jobs_for_country) < num_jobs: 
-                job_buttons = driver.find_elements(By.XPATH,"//*[@id='MainCol']/div[1]/ul/li")
+                job_buttons = driver.find_elements_by_xpath("//*[@id='MainCol']/div[1]/ul/li")
                 # Going through each job url in this page
                 job_buttons_href = driver.find_elements(By.XPATH,'//*[@id="MainCol"]/div[1]/ul/li/div[2]/a')
+                #print("هون")
                 number_of_all_page= driver.find_element(By.CLASS_NAME, "paginationFooter").text
-                print("Now we in {} ".format(number_of_all_page))
-                for job in range( len(job_buttons)): 
+                print("Now we in {} ".format(number_of_all_page)) 
+                #for job in range(len(job_buttons)):
+                for job_button in job_buttons:
+                    
                     print("Progress: {}".format("" + str(len(jobs_for_country)) + "/" + str(num_jobs)))
                     if len(jobs_for_country) >= num_jobs:
                         # When the number of jobs collected has reached the number we set. 
                         break
                     try:
-                        job_buttons[job].click()  
+                        job_button.click()
                     except:
                         pass
-                    time.sleep(3)
+                    time.sleep(5)
                     try:
                         driver.find_element(By.XPATH,'//*[@id="JAModal"]/div/div[2]/span').click()
                     except NoSuchElementException:
@@ -81,32 +85,36 @@ def get_jobs(keyword, num_jobs):
                                    
                     while not collected_successfully:
                         try:
+                            #time.sleep(10)
+                            job_num=job_buttons.index(job_button)
                             company_name = driver.find_element(By.XPATH,'//div[@class="css-xuk5ye e1tk4kwz5"]').text
                             location = driver.find_element(By.XPATH,'.//div[@class="css-56kyx5 e1tk4kwz1"]').text
                             job_title = driver.find_element(By.XPATH,'.//div[@class="css-1j389vi e1tk4kwz2"]').text
-                            job_id  = job_buttons[job].get_attribute("data-id")
-                            job_url= job_buttons_href[job].get_attribute("href")
+                            job_id  = job_buttons[job_num].get_attribute("data-id")
+                            job_url= job_buttons_href[job_num].get_attribute("href")
+                            #job_description = driver.find_element(By.XPATH,'.//div[@class="jobDescriptionContent desc"]').text
                             collected_successfully = True
                         except:
                             collected_successfully = True
+                   # time.sleep(5)
                     #Click on "Show More" for extract full description                        
                     try:
                         driver.find_element(By.XPATH,'//div[@class="css-t3xrds e856ufb2"]').click()
-                        #time.sleep(3)
                     except NoSuchElementException:
                         pass
                     try:
                         job_description_full = driver.find_element(By.XPATH,'.//div[@class="jobDescriptionContent desc"]').text
                     except NoSuchElementException:
-                        job_description_full ="N/A"    
+                        job_description_full ="N/A" 
                     try:
-                        Posted_Date=driver.find_element(By.XPATH,'//*[@id="MainCol"]/div[1]/ul/li[{}]/div[2]/div[3]/div[2]/div[2]'.format(job+1)).text
+                        Posted_Date=driver.find_element(By.XPATH,'//*[@id="MainCol"]/div[1]/ul/li[{}]/div[2]/div[3]/div[2]/div[2]'.format(job_num+1)).text
                     except NoSuchElementException:
                         try:
-                            Posted_Date=driver.find_element(By.XPATH,'//*[@id="MainCol"]/div[1]/ul/li[{}]/div[2]/div[2]/div/div[2]'.format(job+1)).text
+                            Posted_Date=driver.find_element(By.XPATH,'//*[@id="MainCol"]/div[1]/ul/li[{}]/div[2]/div[2]/div/div[2]'.format(job_num+1)).text
                         except:
-                            Posted_Date="N/A"   
+                            Posted_Date="N/A" 
                     now = datetime.now()
+                    #print("yesssssssssssssssssss =",type(Posted_Date))
                     try:
                         exdate= [int(x) for x in re.findall(r'-?\d+\.?\d*',Posted_Date)][0]
                         Posted_Data_N=now.date() - timedelta(days=exdate)
@@ -122,10 +130,12 @@ def get_jobs(keyword, num_jobs):
                                 t=True
                         if (t == False):
                             job_type='N/A'
+                   
                     except:
-                        job_type='N/A'                                 
+                        job_type='N/A'                              
                     try:
-                        salary_estimate = driver.find_element(By.XPATH,'//*[@id="MainCol"]/div[1]/ul/li[{}]/div[2]/div[3]/div[1]/span'.format(job+1)).text
+                        salary_estimate = driver.find_element(By.XPATH,'//*[@id="MainCol"]/div[1]/ul/li[{}]/div[2]/div[3]/div[1]/span'.format(job_num+1)).text
+                        
                     except NoSuchElementException:
                         # You need to set a "not found value. It's important."
                         salary_estimate = 'N/A'
@@ -136,7 +146,10 @@ def get_jobs(keyword, num_jobs):
                         # You need to set a "not found value. It's important."
                         rating = 'N/A'
                     #print("the Rating = ",rating)
-                   
+                    try:
+                        page = driver.find_element_by_xpath('//*[@id="MainCol"]/div[2]/div/div[2]').text
+                    except NoSuchElementException:
+                        pass
                     #Extract Current Date Collection from a Datetime Object
                     now = datetime.now()
                     current_date = now.date()
@@ -149,7 +162,7 @@ def get_jobs(keyword, num_jobs):
                     "JobTitle" : job_title,
                     "CompanyName" : company_name,
                     "RatingNumber" : rating,
-                    "PostedDate":Posted_Date,
+                   "PostedDate":Posted_Date,
                     "Salary" : salary_estimate,
                     "jobType" :job_type,
                     "JobURL" : job_url,
@@ -163,16 +176,23 @@ def get_jobs(keyword, num_jobs):
                     page = page.split()
                     if page[1]==page[3]:
                         break
-                    driver.find_element(By.CSS_SELECTOR,'[alt="next-icon"]').click()
-                    time.sleep(10)
-                except NoSuchElementException:
+                    driver.find_element_by_css_selector('[alt="next-icon"]').click()
+                    time.sleep(5)
+                except:
                     print("Scraping terminated before reaching target number of jobs. Needed {}, got {}.".format(num_jobs, len(jobs_for_country)))
                     break
+        except:
+            
+            print("وينها")
             for i in jobs_for_country:
-                jobs_for_countries.append(i) 
-        #This line converts the dictionary object into a pandas DataFrame.  
+               jobs_for_countries.append(i)
+            break          
+        for i in jobs_for_country:
+           jobs_for_countries.append(i)                       
+       #This line converts the dictionary object into a pandas DataFrame.
+   
     return pd.DataFrame(jobs_for_countries)
      
-df=get_jobs('data',300)
+df=get_jobs('data',3)
 df.to_excel("data_final.xlsx",index=True) 
      
