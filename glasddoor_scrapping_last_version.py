@@ -57,7 +57,7 @@ def get_jobs(keyword, num_jobs):
             pass
        # time.sleep(5)
         while len(jobs_for_country) < num_jobs: 
-           job_buttons = driver.find_elements_by_xpath("//*[@id='MainCol']/div[1]/ul/li")
+           job_buttons = driver.find_elements(By.XPATH,"//*[@id='MainCol']/div[1]/ul/li")
            # Going through each job url in this page
            job_buttons_href = driver.find_elements(By.XPATH,'//*[@id="MainCol"]/div[1]/ul/li/div[2]/a')
            #print("هون")
