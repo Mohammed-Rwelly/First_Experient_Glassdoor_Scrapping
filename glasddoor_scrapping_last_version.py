@@ -50,12 +50,12 @@ def get_jobs(keyword, num_jobs):
         except:
             pass
         #after loding the page we are clicking on "see all the jobs " button 
-        time.sleep(5)
+        #time.sleep(5)
         try:
             driver.find_element(By.XPATH,'//span[@class="SVGInline css-1mgba7 css-1hjgaef"]').click()
         except:
             pass
-        time.sleep(5)
+       # time.sleep(5)
         while len(jobs_for_country) < num_jobs: 
            job_buttons = driver.find_elements_by_xpath("//*[@id='MainCol']/div[1]/ul/li")
            # Going through each job url in this page
@@ -144,10 +144,10 @@ def get_jobs(keyword, num_jobs):
                        # You need to set a "not found value. It's important."
                        rating = 'N/A'
                    #print("the Rating = ",rating)
-                   try:
-                       page = driver.find_element_by_xpath('//*[@id="MainCol"]/div[2]/div/div[2]').text
-                   except NoSuchElementException:
-                       pass
+                  # try:
+                       #page = driver.find_element_by_xpath('//*[@id="MainCol"]/div[2]/div/div[2]').text
+                   #except NoSuchElementException:
+                     #  pass
                    #Extract Current Date Collection from a Datetime Object
                    now = datetime.now()
                    current_date = now.date()
