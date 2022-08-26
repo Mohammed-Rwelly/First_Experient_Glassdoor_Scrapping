@@ -10,8 +10,8 @@ from selenium.webdriver.chrome.service import Service
 from datetime import datetime,timedelta
 import re
 #locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans"]
-locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
-#locations = ["France","Qatar"]
+#locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
+locations = ["France","Qatar"]
 def get_jobs(keyword, num_jobs):
     '''Gathers jobs as a dataframe, scraped from Glassdoor'''
     # Initializing the webdriver
@@ -50,12 +50,12 @@ def get_jobs(keyword, num_jobs):
         except:
             pass
         #after loding the page we are clicking on "see all the jobs " button 
-        time.sleep(5)
+        #time.sleep(5)
         try:
             driver.find_element(By.XPATH,'//span[@class="SVGInline css-1mgba7 css-1hjgaef"]').click()
         except:
             pass
-        time.sleep(5)
+        #time.sleep(5)
         while len(jobs_for_country) < num_jobs: 
            job_buttons = driver.find_elements(By.XPATH,"//*[@id='MainCol']/div[1]/ul/li")
            # Going through each job url in this page
@@ -74,7 +74,7 @@ def get_jobs(keyword, num_jobs):
                        job_button.click()
                    except:
                        pass
-                   time.sleep(10)
+                   time.sleep(5)
                    try:
                        driver.find_element(By.XPATH,'//*[@id="JAModal"]/div/div[2]/span').click()
                    except NoSuchElementException:
@@ -187,6 +187,6 @@ def get_jobs(keyword, num_jobs):
            jobs_for_countries.append(i)
     #This line converts the dictionary object into a pandas DataFrame.
     return pd.DataFrame(jobs_for_countries)
-df=get_jobs('data',300)
+df=get_jobs('data',50)
 df.to_excel("data_final.xlsx",index=True) 
      
