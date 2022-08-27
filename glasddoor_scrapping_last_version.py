@@ -9,8 +9,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from datetime import datetime,timedelta
 import re
-#locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans"]
-locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
+locations = ["Abu Dhabi","Istanbul","Ankara","İzmir","Barcelona","Valencia","Riyadh","Muscat","Tokyo","Rome"]
+#locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
 #locations = ["France","Qatar"]
 def get_jobs(keyword, num_jobs):
     '''Gathers jobs as a dataframe, scraped from Glassdoor'''
@@ -170,7 +170,7 @@ def get_jobs(keyword, num_jobs):
            try:
                page = driver.find_element(By.XPATH,'//*[@id="MainCol"]/div[2]/div/div[2]').text
                page = page.split()
-               if page[1]==page[3]:
+               if page[1]==page[3] or page[1] > page[3]:
                    break
                driver.find_element(By.CSS_SELECTOR,'[alt="next-icon"]').click()
                time.sleep(5)
