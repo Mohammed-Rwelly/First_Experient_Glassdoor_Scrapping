@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from datetime import datetime,timedelta
 import re
-locations = ["Abu Dhabi"]
+locations = ["Istanbul"]
 #locations = ["Abu Dhabi","Istanbul","Ankara","İzmir","Barcelona","Valencia","Riyadh","Muscat","Tokyo","Rome"]
 #locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
 #locations = ["France","Qatar"]
