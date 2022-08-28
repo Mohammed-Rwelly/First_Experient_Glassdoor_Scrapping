@@ -10,7 +10,7 @@ from selenium.webdriver.chrome.service import Service
 from datetime import datetime,timedelta
 import re
 #locations = ["Istanbul"]
-locations = ["Abu Dhabi","Istanbul","Ankara","İzmir","Barcelona","Valencia","Riyadh","Muscat","Tokyo","Rome"]
+locations = ["Istanbul","Ankara","İzmir","Barcelona","Valencia","Riyadh","Muscat","Tokyo","Rome"]
 #locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
 #locations = ["France","Qatar"]
 def get_jobs(keyword, num_jobs):
@@ -182,6 +182,6 @@ def get_jobs(keyword, num_jobs):
            jobs_for_countries.append(i)
     #This line converts the dictionary object into a pandas DataFrame.
     return pd.DataFrame(jobs_for_countries)
-df=get_jobs('data',500)
+df=get_jobs('data',400)
 df.to_excel("data_final.xlsx",index=True) 
      
