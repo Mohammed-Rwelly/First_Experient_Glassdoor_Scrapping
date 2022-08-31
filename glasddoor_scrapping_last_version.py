@@ -11,7 +11,8 @@ from datetime import datetime,timedelta
 import re
 
 #locations = ["Istanbul"]
-locations = ["Jeddah","Dammam","Cluj-Napoca","Timisoara","Iasi","Brasov","Constanta","Craiova","Galati","Ploieşti","Oradea"]
+locations=["Atlanta","Washington","Boston","Phoenix","Denver","Sacramento","Austin","Indianapolis","Columbus"]
+#locations = ["Jeddah","Dammam","Cluj-Napoca","Timisoara","Iasi","Brasov","Constanta","Craiova","Galati","Ploieşti","Oradea"]
 #locations = ["Bern","Zürich","Basel","Lausanne","Chur","Neuchâtel","Aarau","Liestal","Stans","Appenzell"]
 #locations = ["Istanbul","Ankara","İzmir","Barcelona","Valencia","Riyadh","Muscat","Tokyo","Rome"]
 #locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
@@ -185,6 +186,6 @@ def get_jobs(keyword, num_jobs):
            jobs_for_countries.append(i)
     #This line converts the dictionary object into a pandas DataFrame.
     return pd.DataFrame(jobs_for_countries)
-df=get_jobs('data',300)
-df.to_excel("Romania.xlsx",index=True) 
+df=get_jobs('data',400)
+df.to_excel("Unitedstate.xlsx",index=True) 
      
