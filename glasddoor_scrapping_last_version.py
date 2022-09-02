@@ -11,7 +11,7 @@ from datetime import datetime,timedelta
 import re
 
 #locations = ["Istanbul"]
-locations =["Providence","Salt Lake City","Nashville","Richmond","Raleigh","Oklahoma City","Hartford","Honolulu","Albany","Baton Rouge","Columbia"]
+locations =["Hartford","Providence","Salt Lake City","Nashville","Richmond","Raleigh","Oklahoma City","Honolulu","Albany","Baton Rouge","Columbia"]
 #locations=["Atlanta","Washington","Boston","Phoenix","Denver","Sacramento","Austin","Indianapolis","Columbus"]
 #locations = ["Jeddah","Dammam","Cluj-Napoca","Timisoara","Iasi","Brasov","Constanta","Craiova","Galati","Ploieşti","Oradea"]
 #locations = ["Bern","Zürich","Basel","Lausanne","Chur","Neuchâtel","Aarau","Liestal","Stans","Appenzell"]
