@@ -10,8 +10,8 @@ from selenium.webdriver.chrome.service import Service
 from datetime import datetime,timedelta
 import re
 
-#locations = ["Istanbul"]
-locations =["Hartford","Providence","Salt Lake City","Nashville","Richmond","Raleigh","Oklahoma City","Honolulu","Albany","Baton Rouge","Columbia"]
+locations = ["Istanbul"]
+#locations =["Hartford","Providence","Salt Lake City","Nashville","Richmond","Raleigh","Oklahoma City","Honolulu","Albany","Baton Rouge","Columbia"]
 #locations=["Atlanta","Washington","Boston","Phoenix","Denver","Sacramento","Austin","Indianapolis","Columbus"]
 #locations = ["Jeddah","Dammam","Cluj-Napoca","Timisoara","Iasi","Brasov","Constanta","Craiova","Galati","Ploieşti","Oradea"]
 #locations = ["Bern","Zürich","Basel","Lausanne","Chur","Neuchâtel","Aarau","Liestal","Stans","Appenzell"]
@@ -161,13 +161,14 @@ def get_jobs(keyword, num_jobs):
                "JobTitle" : job_title,
                "CompanyName" : company_name,
                "RatingNumber" : rating,
-              "PostedDate":Posted_Date,
+               "PostedDate":Posted_Date,
+               "Posted_Date_N":Posted_Data_N,
                "Salary" : salary_estimate,
-               "jobType" :job_type,
-               "JobURL" : job_url,
+               "JobType" :job_type,
+               "jobURL" : job_url,
                "ShortDiscribtion" : "N/A",
                "fullJobDescribtion":job_description_full,
-               "Posted_Date_N":Posted_Data_N,
+               
                })
              
                
@@ -187,6 +188,8 @@ def get_jobs(keyword, num_jobs):
            jobs_for_countries.append(i)
     #This line converts the dictionary object into a pandas DataFrame.
     return pd.DataFrame(jobs_for_countries)
-df=get_jobs('data',300)
+df=get_jobs('data',3)
+my_conn = create_engine("mysql+pymysql://admin:12345678@database-1.ciaff8ckhmlj.us-west-2.rds.amazonaws.com:3306/GlassdoorDataBase")
+df2.to_sql (con =my_conn , name = 'GlassdoorDataset1' , if_exists = 'append' , index = False )
 df.to_excel("Unitedstate.xlsx",index=True) 
      
