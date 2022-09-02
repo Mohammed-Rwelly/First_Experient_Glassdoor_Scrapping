@@ -1,4 +1,4 @@
-from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
+from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException,StaleElementReferenceException
 from selenium import webdriver
 import time
 import pandas as pd
@@ -133,7 +133,7 @@ def get_jobs(keyword, num_jobs):
                            job_type='N/A'
                    except:
                        job_type='N/A'      
-               except NoSuchElementException:
+               except NoSuchElementException or StaleElementReferenceException:
                    job_description_full ="N/A" 
                    job_type='N/A'
                    pass                       
