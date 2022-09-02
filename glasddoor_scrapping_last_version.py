@@ -192,6 +192,6 @@ def get_jobs(keyword, num_jobs):
     return pd.DataFrame(jobs_for_countries)
 df=get_jobs('data',3)
 my_conn = create_engine("mysql+pymysql://admin:12345678@database-1.ciaff8ckhmlj.us-west-2.rds.amazonaws.com:3306/GlassdoorDataBase")
-df2.to_sql (con =my_conn , name = 'GlassdoorDataset1' , if_exists = 'append' , index = False )
+df.to_sql (con =my_conn , name = 'GlassdoorDataset1' , if_exists = 'append' , index = False )
 df.to_excel("Unitedstate.xlsx",index=True) 
      
