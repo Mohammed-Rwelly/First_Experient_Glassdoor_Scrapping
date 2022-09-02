@@ -70,8 +70,11 @@ def get_jobs(keyword, num_jobs):
            # Going through each job url in this page
            job_buttons_href = driver.find_elements(By.XPATH,'//*[@id="MainCol"]/div[1]/ul/li/div[2]/a')
            #print("هون")
-           number_of_all_page=driver.find_element(By.CLASS_NAME, "paginationFooter").text
-           print("Now we in {} ".format(number_of_all_page)) 
+           try:
+            number_of_all_page=driver.find_element(By.CLASS_NAME, "paginationFooter").text
+            print("Now we in {} ".format(number_of_all_page)) 
+           except NoSuchElementException:
+            pass  
            #for job in range(len(job_buttons)):
            for job_button in job_buttons:
                print("Progress: {}".format("" + str(len(jobs_for_country)) + "/" + str(num_jobs)))
