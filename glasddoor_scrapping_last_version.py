@@ -9,6 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from datetime import datetime,timedelta
 from sqlalchemy import create_engine
+import pymysql
 import re
 
 locations = ["Istanbul"]
