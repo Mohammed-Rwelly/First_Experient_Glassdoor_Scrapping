@@ -13,7 +13,7 @@ import pymysql
 import re
 
 #locations = ["Istanbul"]
-locations=['Kuala Lumpur','Ipoh','George Town','Kuantan','Shah Alam','Johor Bahru','Kota Bharu','Melaka','Kota Kinabalu','Seremban','Kuching','Kuala Terengganu']
+locations=['Kuala Lumpur','Ipoh','George Town','Kuantan','Shah Alam','Johor Bahru','Kota Bharu','Melaka','Kota Kinabalu','Seremban','Kuching']
 #locations =["Hartford","Providence","Salt Lake City","Nashville","Richmond","Raleigh","Oklahoma City","Honolulu","Albany","Baton Rouge","Columbia"]
 #locations=["Atlanta","Washington","Boston","Phoenix","Denver","Sacramento","Austin","Indianapolis","Columbus"]
 #locations = ["Jeddah","Dammam","Cluj-Napoca","Timisoara","Iasi","Brasov","Constanta","Craiova","Galati","Ploieşti","Oradea"]
