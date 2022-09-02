@@ -19,7 +19,7 @@ jobs:
       # - name: Install software
       #   run: sudo apt install -y chromium-browser
       - name: Install all necessary packages
-        run: pip install requests pandas webdriver-manager selenium By openpyxl
+        run: pip install requests pandas webdriver-manager selenium By openpyxl sqlalchemy 
       - name: Run the scraping script
         run: python glasddoor_scrapping_last_version.py
       - name: Commit and push if content changed
