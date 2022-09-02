@@ -8,6 +8,7 @@ from webdriver_manager.core.utils import ChromeType
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from datetime import datetime,timedelta
+from sqlalchemy import create_engine
 import re
 
 locations = ["Istanbul"]
