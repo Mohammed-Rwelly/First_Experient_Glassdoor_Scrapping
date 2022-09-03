@@ -183,7 +183,7 @@ def get_jobs(keyword, num_jobs):
            try:
                page = driver.find_element(By.XPATH,'//*[@id="MainCol"]/div[2]/div/div[2]').text
                page = page.split()
-               if page[1]==page[3]:
+               if (page[1] == page[3]) or (int(page[1]) == int(page[3])+1):
                    print("hhhhh")
                    break
                driver.find_element(By.CSS_SELECTOR,'[alt="next-icon"]').click()
