@@ -12,7 +12,7 @@ from sqlalchemy import create_engine
 import pymysql
 import re
 locations=["Bangkok","Nonthaburi","Chiang Mai","Taichung","Kraków","Łódź","Wrocław","Poznań","Gdańsk","Szczecin","Bydgoszcz"]
-locations=["Stuttgart","Bremen","Dresden","Hannover","Wiesbaden","Kiel","Magdeburg","Mainz","Erfurt","Potsdam","Saarbrücken","Schwerin"]
+#locations=["Stuttgart","Bremen","Dresden","Hannover","Wiesbaden","Kiel","Magdeburg","Mainz","Erfurt","Potsdam","Saarbrücken","Schwerin"]
 #locations = ["Delhi","Mumbai","Kolkāta","Bangalore","Chennai","Hyderābād","Lucknow","Bhopal","Rānchi","Chandīgarh"]
 #locations=['Kuala Lumpur','Ipoh','George Town','Kuantan','Shah Alam','Johor Bahru','Kota Bharu','Melaka','Kota Kinabalu','Seremban','Kuching']
 #locations =["Hartford","Providence","Salt Lake City","Nashville","Richmond","Raleigh","Oklahoma City","Honolulu","Albany","Baton Rouge","Columbia"]
