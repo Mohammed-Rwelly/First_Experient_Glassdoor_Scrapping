@@ -13,7 +13,8 @@ import pymysql
 import re
 
 #locations = ["Istanbul"]
-locations=['Kuala Lumpur','Ipoh','George Town','Kuantan','Shah Alam','Johor Bahru','Kota Bharu','Melaka','Kota Kinabalu','Seremban','Kuching']
+locations = ["Delhi","Mumbai","Kolkāta","Bangalore","Chennai","Hyderābād","Lucknow","Bhopal","Rānchi","Chandīgarh"]
+#locations=['Kuala Lumpur','Ipoh','George Town','Kuantan','Shah Alam','Johor Bahru','Kota Bharu','Melaka','Kota Kinabalu','Seremban','Kuching']
 #locations =["Hartford","Providence","Salt Lake City","Nashville","Richmond","Raleigh","Oklahoma City","Honolulu","Albany","Baton Rouge","Columbia"]
 #locations=["Atlanta","Washington","Boston","Phoenix","Denver","Sacramento","Austin","Indianapolis","Columbus"]
 #locations = ["Jeddah","Dammam","Cluj-Napoca","Timisoara","Iasi","Brasov","Constanta","Craiova","Galati","Ploieşti","Oradea"]
@@ -197,5 +198,5 @@ def get_jobs(keyword, num_jobs):
 df=get_jobs('data',400)
 my_conn = create_engine("mysql+pymysql://admin:12345678@database-1.ciaff8ckhmlj.us-west-2.rds.amazonaws.com:3306/GlassdoorDataBase")
 df.to_sql (con =my_conn , name = 'GlassdoorDataset1' , if_exists = 'append' , index = False )
-df.to_excel("Malaysia.xlsx",index=True) 
+df.to_excel("India_1.xlsx",index=True) 
      
