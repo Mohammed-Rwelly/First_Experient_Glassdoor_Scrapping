@@ -11,8 +11,8 @@ from datetime import datetime,timedelta
 from sqlalchemy import create_engine
 import pymysql
 import re
-
-locations=["Manaus","Recife","Belém","Porto Alegre","Goiânia","São Luís","Maceió","Campo Grande","Natal","Teresina","João Pessoa","Aracaju","Cuiabá"]
+locations=["Umm Şalāl `Alī","Lima","Callao","Panama City","Colón","Oslo","Bergen","Stavanger","Skien","Kano","Ibadan","Abuja","Maiduguri","Port Harcourt","Owerri","Abeokuta","Auckland","Wellington","Christchurch","Hamilton","Napier","Casablanca","Rabat",'Tangier',"Mexico City"]
+#locations=["Manaus","Recife","Belém","Porto Alegre","Goiânia","São Luís","Maceió","Campo Grande","Natal","Teresina","João Pessoa","Aracaju","Cuiabá"]
 #locations=["Rio de Janeiro","Belo Horizonte","Curitiba","Florianópolis",'Porto Velho',"Vitória","Palmas","Manama","Vienna"]
 #locations=["Bangkok","Nonthaburi","Chiang Mai","Taichung","Kraków","Łódź","Wrocław","Poznań","Gdańsk","Szczecin","Bydgoszcz"]
 #locations=["Stuttgart","Bremen","Dresden","Hannover","Wiesbaden","Kiel","Magdeburg","Mainz","Erfurt","Potsdam","Saarbrücken","Schwerin"]
