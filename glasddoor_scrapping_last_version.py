@@ -11,7 +11,8 @@ from datetime import datetime,timedelta
 from sqlalchemy import create_engine
 import pymysql
 import re
-locations=["Bangkok","Nonthaburi","Chiang Mai","Taichung","Kraków","Łódź","Wrocław","Poznań","Gdańsk","Szczecin","Bydgoszcz"]
+locations=["Rio de Janeiro","Belo Horizonte","Curitiba","Florianópolis",'Porto Velho',"Vitória","Palmas","Manama","Vienna"]
+#locations=["Bangkok","Nonthaburi","Chiang Mai","Taichung","Kraków","Łódź","Wrocław","Poznań","Gdańsk","Szczecin","Bydgoszcz"]
 #locations=["Stuttgart","Bremen","Dresden","Hannover","Wiesbaden","Kiel","Magdeburg","Mainz","Erfurt","Potsdam","Saarbrücken","Schwerin"]
 #locations = ["Delhi","Mumbai","Kolkāta","Bangalore","Chennai","Hyderābād","Lucknow","Bhopal","Rānchi","Chandīgarh"]
 #locations=['Kuala Lumpur','Ipoh','George Town','Kuantan','Shah Alam','Johor Bahru','Kota Bharu','Melaka','Kota Kinabalu','Seremban','Kuching']
@@ -199,5 +200,5 @@ def get_jobs(keyword, num_jobs):
 df=get_jobs('data',400)
 my_conn = create_engine("mysql+pymysql://admin:12345678@database-1.ciaff8ckhmlj.us-west-2.rds.amazonaws.com:3306/GlassdoorDataBase")
 df.to_sql (con =my_conn , name = 'GlassdoorDataset1' , if_exists = 'append' , index = False )
-df.to_excel("Poland.xlsx",index=True) 
+df.to_excel("Brazil.xlsx",index=True) 
      
