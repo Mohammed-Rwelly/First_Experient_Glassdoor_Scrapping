@@ -5,6 +5,8 @@ import pandas as pd
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from datetime import datetime,timedelta
@@ -130,7 +132,8 @@ def get_jobs(keyword, num_jobs):
                    
                #Click on "Show More" for extract full description                        
                try:
-                   driver.find_element(By.XPATH,'//div[@class="css-t3xrds e856ufb2"]').click()
+                   el= WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="css-t3xrds e856ufb2"]')))
+                   driver.execute_script("arguments[0].click();", el)
                    job_description_full = driver.find_element(By.XPATH,'.//div[@class="jobDescriptionContent desc"]').text
                    #Extract job title from job description full 
                    lines=job_description_full.splitlines()
