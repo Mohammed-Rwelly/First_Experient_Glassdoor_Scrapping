@@ -1,4 +1,4 @@
-from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException,StaleElementReferenceException
+from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException,StaleElementReferenceException,TimeoutException
 from selenium import webdriver
 import time
 import pandas as pd
@@ -132,7 +132,7 @@ def get_jobs(keyword, num_jobs):
                    
                #Click on "Show More" for extract full description                        
                try:
-                   el= WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="css-t3xrds e856ufb2"]')))
+                   el= WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="css-t3xrds e856ufb2"]')))
                    driver.execute_script("arguments[0].click();", el)
                    job_description_full = driver.find_element(By.XPATH,'.//div[@class="jobDescriptionContent desc"]').text
                    #Extract job title from job description full 
@@ -147,7 +147,7 @@ def get_jobs(keyword, num_jobs):
                            job_type='N/A'
                    except:
                        job_type='N/A'      
-               except NoSuchElementException or StaleElementReferenceException:
+               except NoSuchElementException or StaleElementReferenceException or TimeoutException:
                    job_description_full ="N/A" 
                    job_type='N/A'
                    pass                       
