@@ -13,20 +13,9 @@ from datetime import datetime,timedelta
 from sqlalchemy import create_engine
 import pymysql
 import re
-locations=["Umm Şalāl `Alī","Lima","Callao","Panama City","Colón","Oslo","Bergen","Stavanger","Skien","Kano","Ibadan","Abuja","Maiduguri","Port Harcourt","Owerri","Abeokuta","Auckland","Wellington","Christchurch"]
-#locations=["Manaus","Recife","Belém","Porto Alegre","Goiânia","São Luís","Maceió","Campo Grande","Natal","Teresina","João Pessoa","Aracaju","Cuiabá"]
-#locations=["Rio de Janeiro","Belo Horizonte","Curitiba","Florianópolis",'Porto Velho',"Vitória","Palmas","Manama","Vienna"]
-#locations=["Bangkok","Nonthaburi","Chiang Mai","Taichung","Kraków","Łódź","Wrocław","Poznań","Gdańsk","Szczecin","Bydgoszcz"]
-#locations=["Stuttgart","Bremen","Dresden","Hannover","Wiesbaden","Kiel","Magdeburg","Mainz","Erfurt","Potsdam","Saarbrücken","Schwerin"]
-#locations = ["Delhi","Mumbai","Kolkāta","Bangalore","Chennai","Hyderābād","Lucknow","Bhopal","Rānchi","Chandīgarh"]
-#locations=['Kuala Lumpur','Ipoh','George Town','Kuantan','Shah Alam','Johor Bahru','Kota Bharu','Melaka','Kota Kinabalu','Seremban','Kuching']
-#locations =["Hartford","Providence","Salt Lake City","Nashville","Richmond","Raleigh","Oklahoma City","Honolulu","Albany","Baton Rouge","Columbia"]
-#locations=["Atlanta","Washington","Boston","Phoenix","Denver","Sacramento","Austin","Indianapolis","Columbus"]
-#locations = ["Jeddah","Dammam","Cluj-Napoca","Timisoara","Iasi","Brasov","Constanta","Craiova","Galati","Ploieşti","Oradea"]
-#locations = ["Bern","Zürich","Basel","Lausanne","Chur","Neuchâtel","Aarau","Liestal","Stans","Appenzell"]
-#locations = ["Istanbul","Ankara","İzmir","Barcelona","Valencia","Riyadh","Muscat","Tokyo","Rome"]
-#locations = ["Qatar","United Kingdom","Teresina","João Pessoa","Aracaju","Berlin","Hamburg","Munich","Szolnok","Sopron","Stans","Dubai","France"]
-#locations = ["France","Qatar"]
+
+locations=['Pretoria','Johannesburg','Cape Town','Bloemfontein','Pietermaritzburg','Singapore','Lisbon','Porto','Polokwane']
+
 def get_jobs(keyword, num_jobs):
     '''Gathers jobs as a dataframe, scraped from Glassdoor'''
     # Initializing the webdriver
@@ -202,8 +191,8 @@ def get_jobs(keyword, num_jobs):
            jobs_for_countries.append(i)
     #This line converts the dictionary object into a pandas DataFrame.
     return pd.DataFrame(jobs_for_countries)
-df=get_jobs('data',400)
+df=get_jobs('data',500)
 my_conn = create_engine("mysql+pymysql://admin:12345678@database-1.ciaff8ckhmlj.us-west-2.rds.amazonaws.com:3306/GlassdoorDataBase")
 df.to_sql (con =my_conn , name = 'GlassdoorDataset1' , if_exists = 'append' , index = False )
-df.to_excel("Brazil2.xlsx",index=True) 
+df.to_excel("South_africa.xlsx",index=True) 
      
