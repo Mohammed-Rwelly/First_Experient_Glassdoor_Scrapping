@@ -121,8 +121,8 @@ def get_jobs(keyword, num_jobs):
                    
                #Click on "Show More" for extract full description                        
                try:
-                   el= WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, '//div[@class="css-t3xrds e856ufb2"]')))
-                   driver.execute_script("arguments[0].click();", el)
+                   time.sleep(3)
+                   driver.find_element(By.XPATH,'//div[@class="css-t3xrds e856ufb2"]').click()
                    job_description_full = driver.find_element(By.XPATH,'.//div[@class="jobDescriptionContent desc"]').text
                    #Extract job title from job description full 
                    lines=job_description_full.splitlines()
@@ -136,7 +136,7 @@ def get_jobs(keyword, num_jobs):
                            job_type='N/A'
                    except:
                        job_type='N/A'      
-               except NoSuchElementException or StaleElementReferenceException or TimeoutException:
+               except NoSuchElementException or StaleElementReferenceException:
                    job_description_full ="N/A" 
                    job_type='N/A'
                    pass                       
