@@ -13,8 +13,8 @@ from datetime import datetime,timedelta
 from sqlalchemy import create_engine
 import pymysql
 import re
-
-locations=['Pretoria','Johannesburg','Cape Town','Bloemfontein','Pietermaritzburg','Singapore','Lisbon','Porto','Polokwane']
+locations=['Helsinki','Tampere','Oulu','Athens','Thessaloníki']
+#locations=['Pretoria','Johannesburg','Cape Town','Bloemfontein','Pietermaritzburg','Singapore','Lisbon','Porto','Polokwane']
 
 def get_jobs(keyword, num_jobs):
     '''Gathers jobs as a dataframe, scraped from Glassdoor'''
@@ -194,5 +194,5 @@ def get_jobs(keyword, num_jobs):
 df=get_jobs('data',500)
 my_conn = create_engine("mysql+pymysql://admin:12345678@database-1.ciaff8ckhmlj.us-west-2.rds.amazonaws.com:3306/GlassdoorDataBase")
 df.to_sql (con =my_conn , name = 'GlassdoorDataset1' , if_exists = 'append' , index = False )
-df.to_excel("South_africa.xlsx",index=True) 
+df.to_excel("Greece.xlsx",index=True) 
      
