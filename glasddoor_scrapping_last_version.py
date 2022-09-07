@@ -13,7 +13,7 @@ from datetime import datetime,timedelta
 from sqlalchemy import create_engine
 import pymysql
 import re
-locations=['United Arab Emirates']
+locations=['United States']
 #locations=['Pretoria','Johannesburg','Cape Town','Bloemfontein','Pietermaritzburg','Singapore','Lisbon','Porto','Polokwane']
 
 def get_jobs(keyword, num_jobs):
