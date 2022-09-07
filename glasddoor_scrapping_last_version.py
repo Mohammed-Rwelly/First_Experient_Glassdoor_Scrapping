@@ -13,7 +13,7 @@ from datetime import datetime,timedelta
 from sqlalchemy import create_engine
 import pymysql
 import re
-locations=['United States']
+locations=['United Arab Emirates']
 #locations=['Pretoria','Johannesburg','Cape Town','Bloemfontein','Pietermaritzburg','Singapore','Lisbon','Porto','Polokwane']
 
 def get_jobs(keyword, num_jobs):
@@ -121,7 +121,7 @@ def get_jobs(keyword, num_jobs):
                    
                #Click on "Show More" for extract full description                        
                try:
-                   time.sleep(3)
+                   time.sleep(2)
                    driver.find_element(By.XPATH,'//div[@class="css-t3xrds e856ufb2"]').click()
                    job_description_full = driver.find_element(By.XPATH,'.//div[@class="jobDescriptionContent desc"]').text
                    #Extract job title from job description full 
@@ -194,5 +194,5 @@ def get_jobs(keyword, num_jobs):
 df=get_jobs('data',2350)
 my_conn = create_engine("mysql+pymysql://admin:12345678@database-1.ciaff8ckhmlj.us-west-2.rds.amazonaws.com:3306/GlassdoorDataBase")
 df.to_sql (con =my_conn , name = 'GlassdoorDataset1' , if_exists = 'append' , index = False )
-df.to_excel("Greece.xlsx",index=True) 
+df.to_excel("United Arab Emirates.xlsx",index=True) 
      
