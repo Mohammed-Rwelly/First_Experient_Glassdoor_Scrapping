@@ -41,7 +41,8 @@ def get_jobs(keyword, num_jobs):
     driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
     for country in locations:
         jobs_for_country=[]
-        url='https://www.glassdoor.com/Search/results.htm?keyword={}&locT=C&locName={}'.format(keyword.replace(' ','%20'),country)
+        url='https://www.glassdoor.com/Job/united-arab-emirates-data-jobs-SRCH_IL.0,20_IN6_KO21,25.htm
+        #url='https://www.glassdoor.com/Search/results.htm?keyword={}&locT=C&locName={}'.format(keyword.replace(' ','%20'),country)
         time.sleep(5)
         driver.get(url)
         # Let the page load. Change this number based on your internet speed.
