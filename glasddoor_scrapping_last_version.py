@@ -192,7 +192,7 @@ def get_jobs(keyword, num_jobs):
            jobs_for_countries.append(i)
     #This line converts the dictionary object into a pandas DataFrame.
     return pd.DataFrame(jobs_for_countries)
-df=get_jobs('data',500)
+df=get_jobs('data',5)
 my_conn = create_engine("mysql+pymysql://admin:12345678@database-1.ciaff8ckhmlj.us-west-2.rds.amazonaws.com:3306/GlassdoorDataBase")
 df.to_sql (con =my_conn , name = 'GlassdoorDataset1' , if_exists = 'append' , index = False )
 df.to_excel("United Arab Emirates.xlsx",index=True) 
